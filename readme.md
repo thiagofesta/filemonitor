@@ -8,6 +8,7 @@ FileMonitor is a ruby program to monitor files and folder changes and apply thos
 - Ruby
 - Gem module [fssm](https://github.com/ttilley/fssm)
 - Gem module [colorize](https://github.com/fazibear/colorize)
+- Gem module [win32console](https://github.com/luislavena/win32console)
 - Gem module [parseconfig](https://github.com/derks/ruby-parseconfig)
 - [net-scp](https://github.com/net-ssh/net-scp)
 - SSH on your path

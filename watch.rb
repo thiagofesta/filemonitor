@@ -3,6 +3,7 @@
 require 'rubygems'
 require 'net/scp'
 require 'fssm'
+require 'win32console'
 require 'colorize'
 require 'parseconfig'
 
@@ -31,6 +32,7 @@ FSSM.monitor($config["local_base_url"], '**/*', :directories => true) do
         else
             puts ">> FILE -> UPDATE -> #{r}".colorize( :yellow )
             sendFile(b, r)
+            puts "----> transfer complete".colorize( :blue )
         end
     end
 
@@ -38,9 +40,11 @@ FSSM.monitor($config["local_base_url"], '**/*', :directories => true) do
         if t == :directory
             puts ">> DIR -> CREATE -> #{r}".colorize( :green )
             ssh("mkdir \"#{r}\"")
+            puts "----> transfer complete".colorize( :blue )
         else
             puts ">> FILE -> CREATE -> #{r}".colorize( :green )
             sendFile(b, r)
+            puts "----> transfer complete".colorize( :blue )
         end
     end
  
@@ -48,9 +52,11 @@ FSSM.monitor($config["local_base_url"], '**/*', :directories => true) do
         if t == :directory
             puts ">> DIR -> DELETE -> #{r}".colorize( :red )
             ssh("rm -rf \"#{r}\"")
+            puts "----> transfer complete".colorize( :blue )
         else
             puts ">> FILE -> DELETE -> #{r}".colorize( :red )
             deleteFile(r)
+            puts "----> transfer complete".colorize( :blue )
         end
     end
 end
